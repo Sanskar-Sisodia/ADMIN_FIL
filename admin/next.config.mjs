@@ -17,9 +17,13 @@ const nextConfig = {
     unoptimized: true,
   },
   experimental: {
-    webpackBuildWorker: true,
-    parallelServerBuildTraces: true,
-    parallelServerCompiles: true,
+    webpackBuildWorker: false, // Disable Webpack workers
+    parallelServerBuildTraces: false, // Reduce memory usage
+    parallelServerCompiles: false, // Reduce CPU load
+  },
+  webpack: (config) => {
+    config.optimization.minimize = false; // Prevent high memory usage
+    return config;
   },
 }
 
