@@ -1,1 +1,0 @@
-self.__REACT_LOADABLE_MANIFEST="{\"app\\\\dashboard\\\\page.tsx -> framer-motion\":{\"id\":\"app\\\\dashboard\\\\page.tsx -> framer-motion\",\"files\":[\"static/chunks/_app-pages-browser_node_modules_framer-motion_dist_es_index_mjs.js\"]}}"
