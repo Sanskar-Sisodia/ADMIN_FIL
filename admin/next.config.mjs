@@ -16,17 +16,20 @@ const nextConfig = {
   images: {
     unoptimized: true,
   },
+  webpack: (config) => {
+    config.resolve.fallback = { fs: false };
+    config.optimization.minimize = false; // Disable minification to prevent Webpack issues
+    config.experiments = { cacheUnaffected: true }; // Enable safe Webpack optimizations
+    config.module.noParse = /node_modules\/webpack/; // Prevent unnecessary Webpack parsing
+    return config;
+  },
+  future: {
+    webpack5: true, // Force Webpack 5
+  },
   experimental: {
-    webpackBuildWorker: false, // Disable Webpack workers
+    webpackBuildWorker: false,
     parallelServerBuildTraces: false,
     parallelServerCompiles: false,
-  },
-  webpack: (config) => {
-    config.optimization.minimize = true; // Enable minification
-    config.resolve.fallback = { fs: false }; // Fix module resolution issues
-    config.performance = { hints: false }; // Prevent performance warnings
-    config.cache = false; // Prevent Webpack from using a bad cache
-    return config;
   },
 }
 
