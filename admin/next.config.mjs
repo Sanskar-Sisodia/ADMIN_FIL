@@ -18,13 +18,10 @@ const nextConfig = {
   },
   webpack: (config) => {
     config.resolve.fallback = { fs: false };
-    config.optimization.minimize = false; // Disable minification to prevent Webpack issues
-    config.experiments = { cacheUnaffected: true }; // Enable safe Webpack optimizations
-    config.module.noParse = /node_modules\/webpack/; // Prevent unnecessary Webpack parsing
+    config.optimization.minimize = false; // Avoid Webpack minification issues
+    config.experiments = { layers: true }; // Fix 'entryOptions.layer' error
+    config.module.noParse = /node_modules\/webpack/; // Prevent Webpack parsing errors
     return config;
-  },
-  future: {
-    webpack5: true, // Force Webpack 5
   },
   experimental: {
     webpackBuildWorker: false,
