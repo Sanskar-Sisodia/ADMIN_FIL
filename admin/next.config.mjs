@@ -18,11 +18,14 @@ const nextConfig = {
   },
   experimental: {
     webpackBuildWorker: false, // Disable Webpack workers
-    parallelServerBuildTraces: false, // Reduce memory usage
-    parallelServerCompiles: false, // Reduce CPU load
+    parallelServerBuildTraces: false,
+    parallelServerCompiles: false,
   },
   webpack: (config) => {
-    config.optimization.minimize = false; // Prevent high memory usage
+    config.optimization.minimize = true; // Enable minification
+    config.resolve.fallback = { fs: false }; // Fix module resolution issues
+    config.performance = { hints: false }; // Prevent performance warnings
+    config.cache = false; // Prevent Webpack from using a bad cache
     return config;
   },
 }
